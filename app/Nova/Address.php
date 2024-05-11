@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -21,7 +22,7 @@ class Address extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'street';
 
     /**
      * The columns that should be searched.
@@ -47,6 +48,12 @@ class Address extends Resource
             Text::make('State'),
             Text::make('Street'),
             Text::make('Zip'),
+            BelongsToMany::make('Organisation')
+                ->fields(function ($request, $relatedModel) {
+                    return [
+                        Text::make('From Date'),
+                    ];
+                }),
         ];
     }
 

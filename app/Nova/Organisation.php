@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -22,7 +24,7 @@ class Organisation extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'organisation_name';
 
     /**
      * The columns that should be searched.
@@ -43,10 +45,16 @@ class Organisation extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Organisation Type', 'refOrganisationType', RefOrganisationType::class),
+            BelongsTo::make('Organisation Type', 'refOrganisationType', RefOrganisationType::class),            
             Text::make('Organisation Name'),
             Text::make('Email'),
             Text::make('Phone'),
+            BelongsToMany::make('Address')
+                ->fields(function ($request, $relatedModel) {
+                    return [
+                        Text::make('From Date'),
+                    ];
+                }),
         ];
     }
 

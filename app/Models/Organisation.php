@@ -12,5 +12,10 @@ class Organisation extends Model
     public function refOrganisationType()
     {
         return $this->belongsTo(RefOrganisationType::class);
+    }    
+
+    public function address()
+    {
+        return $this->belongsToMany(Address::class)->withPivot('from_date');
     }
 }

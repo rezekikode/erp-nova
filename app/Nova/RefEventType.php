@@ -3,18 +3,18 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Employee extends Resource
+class RefEventType extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Employee>
+     * @var class-string<\App\Models\RefEventType>
      */
-    public static $model = \App\Models\Employee::class;
+    public static $model = \App\Models\RefEventType::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -42,8 +42,7 @@ class Employee extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Person'),
-            BelongsTo::make('Ref Employee Type'),
+            Text::make('Type Name'),
         ];
     }
 
