@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
+    public function refCustomerType()
+    {
+        return $this->belongsTo(RefCustomerType::class);
+    }
 }

@@ -28,6 +28,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make('References', [                    
                     MenuItem::make('Organisation Types', 'resources/ref-organisation-types'),
                     MenuItem::make('Employee Types', 'resources/ref-employee-types'),
+                    MenuItem::make('Customer Types', 'resources/ref-customer-types'),
                     MenuItem::make('Leave Types', 'resources/ref-leave-types'),
                     MenuItem::make('Event Types', 'resources/ref-event-types'),
                     MenuItem::make('Payment Method', 'resources/ref-payment-methods'),

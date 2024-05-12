@@ -3,25 +3,26 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Customer extends Resource
+class RefCustomerType extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Customer>
+     * @var class-string<\App\Models\RefCustomerType>
      */
-    public static $model = \App\Models\Customer::class;
+    public static $model = \App\Models\RefCustomerType::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'type_name';
 
     /**
      * The columns that should be searched.
@@ -42,8 +43,8 @@ class Customer extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Person'),
-            BelongsTo::make('Ref Customer Type'),
+            Text::make('Type Name'),
+            HasMany::make('Customers'),
         ];
     }
 

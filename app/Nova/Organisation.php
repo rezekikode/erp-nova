@@ -101,4 +101,73 @@ class Organisation extends Resource
     {
         return [];
     }
+
+    /**
+     * Get the fields displayed by the resource on detail page.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @return array
+     */
+    // public function fieldsForIndex(NovaRequest $request)
+    // {
+    //     return [
+    //         ID::make()->sortable(),
+    //         BelongsTo::make('Organisation Type', 'refOrganisationType', RefOrganisationType::class),            
+    //         Text::make('Organisation Name'),
+    //         Text::make('Email'),
+    //         Text::make('Phone'),
+    //         BelongsToMany::make('Address')
+    //             ->fields(function ($request, $relatedModel) {
+    //                 return [
+    //                     Text::make('From Date'),
+    //                 ];
+    //             }),
+    //     ];
+    // }
+
+    /**
+     * Get the fields displayed by the resource on detail page.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @return array
+     */
+    public function fieldsForCreate(NovaRequest $request)
+    {
+        return [
+            ID::make()->sortable(),
+            BelongsTo::make('Organisation Type', 'refOrganisationType', RefOrganisationType::class),            
+            Text::make('Organisation Name'),
+            Text::make('Email'),
+            Text::make('Phone'),
+            BelongsToMany::make('Address')
+                ->fields(function ($request, $relatedModel) {
+                    return [
+                        Date::make('From Date'),
+                    ];
+                }),
+        ];
+    }
+
+    /**
+     * Get the fields displayed by the resource on detail page.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @return array
+     */
+    // public function fieldsForUpdate(NovaRequest $request)
+    // {
+    //     return [
+    //         ID::make()->sortable(),
+    //         BelongsTo::make('Organisation Type', 'refOrganisationType', RefOrganisationType::class),            
+    //         Text::make('Organisation Name'),
+    //         Text::make('Email'),
+    //         Text::make('Phone'),
+    //         BelongsToMany::make('Address')
+    //             ->fields(function ($request, $relatedModel) {
+    //                 return [
+    //                     Date::make('From Date'),
+    //                 ];
+    //             }),
+    //     ];
+    // }
 }

@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -47,6 +48,8 @@ class Person extends Resource
             Text::make('Last Name'),
             Text::make('Gender'),
             Text::make('Date of Birth'),
+            BelongsTo::make('Employee'),
+            BelongsTo::make('Customer'),
         ];
     }
 
@@ -93,4 +96,17 @@ class Person extends Resource
     {
         return [];
     }
+
+    /**
+     * Get the fields displayed by the resource on detail page.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @return array
+     */
+    // public function fieldsForIndex(NovaRequest $request)
+    // {
+    //     return [
+            
+    //     ];
+    // }
 }
