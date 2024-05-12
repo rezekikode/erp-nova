@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class RefLeaveTypes extends Resource
@@ -20,7 +21,7 @@ class RefLeaveTypes extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'leave_name';
 
     /**
      * The columns that should be searched.
@@ -41,6 +42,7 @@ class RefLeaveTypes extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Leave Name')
         ];
     }
 

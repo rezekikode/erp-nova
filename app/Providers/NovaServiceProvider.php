@@ -38,6 +38,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::make('People', 'resources/people'),
                     MenuItem::make('Addresses', 'resources/addresses'),
                     MenuItem::make('Building', 'resources/buildings'),
+                    MenuItem::make('Floors', 'resources/floors'),
                     MenuItem::make('Wards', 'resources/wards'), 
                     MenuItem::make('Rooms', 'resources/rooms'),    
                     MenuItem::make('Beds', 'resources/beds'),                
